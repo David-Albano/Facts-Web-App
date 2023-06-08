@@ -50,6 +50,13 @@ h1 {
 .logo img {
     width: 68px;
     height: 68px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.logo img:hover {
+    transform: scale(110%) rotate(360deg);
+    transition: 0.7s;
 }
 
 .fact-form {
@@ -133,10 +140,43 @@ h1 {
     color: inherit;
     cursor: pointer;
     transition: 0.4s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .vote-buttons button:hover {
     background-color:#292524;
+    transition: 0.4s;
+}
+
+.thumb-up {
+    margin-top: -3px;
+    transition: 0.5s;
+}
+
+.mind-blowing {
+    transition: 0.5s;
+}
+
+.forbidden{
+    transition: 0.5s;
+}
+
+.vote-buttons button:hover .thumb-up{
+    transform: scale(120%) rotate(-30deg);
+    transition: 0.4s;
+    margin-top: -5px;
+    margin-left: -3px;
+}
+
+.vote-buttons button:hover .mind-blowing{
+    transform: scale(125%) rotate(-360deg);
+    transition: 0.4s;
+}
+
+.vote-buttons button:hover .forbidden{
+    transform: scale(125%) rotateY(360deg); 
     transition: 0.4s;
 }
 
@@ -205,7 +245,7 @@ ul {
 }
 
 /* HEADER */
-@media (max-width: 855px) {
+@media (max-width: 870px) {
     .header {
         flex-direction: column;
         gap: 20px
@@ -245,7 +285,7 @@ ul {
     }
 }
 
-@media (max-width: 625px) {
+@media (max-width: 642px) {
     .logo {
         flex-direction: column;
     }
@@ -259,7 +299,7 @@ ul {
     }
 }
 
-@media (max-width: 541px) {
+@media (max-width: 558px) {
     .logo {
         text-align: center;
     }
@@ -280,7 +320,7 @@ ul {
 
 /* FACTS AND CATEGORIES SECTION */
 
-@media (max-width: 855px) {
+@media (max-width: 870px) {
     .main {
         grid-template-columns: 1fr;
     }
