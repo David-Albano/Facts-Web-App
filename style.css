@@ -59,6 +59,10 @@ h1 {
     text-align: center;
 }
 
+.category {
+    margin-bottom: 16px;
+}
+
 .fact {
     font-size: 20px;
     line-height: 1.4;
@@ -104,4 +108,38 @@ ul {
 
 .source:active {
     color: #1101a8;
+}
+
+.btn {
+    font-family: "Coiny", sans-serif;
+    line-height: 1;
+    text-transform: uppercase;
+    font-size: 17px;
+    padding: 16px 0 13px;
+    border: none;
+    border-radius: 25px;
+    transition: 0.3s;
+    color: inherit;
+    cursor: pointer;
+    background-image: linear-gradient(135deg,
+    #3b82f6, #ef4444, #16a34a, #eab308);
+}
+
+.btn:hover {
+    transform: scale(105%) rotate(-5deg);
+}
+
+.btn-large {
+    font-size: 20px;
+    padding: 20px 32px 17px;
+}
+
+.btn-all-categories {
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.btn-category {
+    width: 100%;
+    background-image: none;
 }
