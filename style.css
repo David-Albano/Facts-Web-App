@@ -203,3 +203,93 @@ ul {
     width: 100%;
     background-image: none;
 }
+
+/* HEADER */
+@media (max-width: 855px) {
+    .header {
+        flex-direction: column;
+        gap: 20px
+    }
+
+    .header button {
+        width: 100%;
+    }
+
+    .header button:hover {
+        transform: rotateX(360deg);
+        transition: 0.9s;
+    }
+}
+
+
+/* FORM */
+
+@media (max-width: 1065px) {
+
+    .fact-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .fact-form input, .fact-form select {
+        width: auto;
+    }
+
+    .fact-form span {
+        margin-right: auto;
+    }
+
+    .fact-form button:hover {
+        transform: scale(103%);
+        transition: 0.3s;
+    }
+}
+
+@media (max-width: 625px) {
+    .logo {
+        flex-direction: column;
+    }
+
+}
+
+@media (max-width: 364px) {
+    .header button {
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+}
+
+@media (max-width: 541px) {
+    .logo {
+        text-align: center;
+    }
+
+}
+
+/* FACTS */
+
+@media (max-width: 1250px) {
+
+    .fact {
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 12px;
+    }
+}
+
+
+/* FACTS AND CATEGORIES SECTION */
+
+@media (max-width: 855px) {
+    .main {
+        grid-template-columns: 1fr;
+    }
+
+    .category:hover:nth-child(odd) .btn {
+        transform: scale(103%) rotate(1.5deg);
+    }
+    
+    .category:hover:nth-child(even) .btn {
+        transform: scale(103%) rotate(-1.5deg);
+    }
+}
