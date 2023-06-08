@@ -11,6 +11,15 @@ body {
     padding: 40px;
 }
 
+.main {
+    display: grid;
+
+    /* First value is the specific one desired for the first row, 
+    the second value as "1fr" is going to occupy th rest of the space */
+    grid-template-columns: 250px 1fr;
+    gap: 48px;
+}
+
 .header {
     margin-bottom: 40px;
     padding: 10px;
@@ -46,6 +55,11 @@ h1 {
     background-color: #44403c;
     margin-bottom: 16px;
     padding: 16px 24px;
+    letter-spacing: -1px;
+
+    display: flex;
+    align-items: center;
+    gap: 24px;
 }
 
 .tag {
@@ -67,6 +81,10 @@ a {
 a:hover {
     color: #3b82f6;
     transition: 0.3s;
+}
+
+.vote-buttons{
+    margin-left: auto;
 }
 
 ul {
