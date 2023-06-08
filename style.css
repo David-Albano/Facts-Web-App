@@ -12,7 +12,7 @@ body {
 }
 
 .container {
-    max-width: 1400px;
+    max-width: 1500px;
     margin: 0 auto;
 }
 
@@ -83,11 +83,32 @@ h1 {
     padding-top: 3px;
     padding-left: 10px;
     padding-right: 10px;
-    border-radius: 15px;
+    border-radius: 100px;
 }
 
 .vote-buttons{
     margin-left: auto;
+    display: flex;
+    flex-shrink: 0;
+    gap: 8px;
+}
+
+.vote-buttons button {
+    font-size: 18px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 100px;
+    background-color: #57534e;
+    font-family: inherit;
+    font-weight: 600;
+    color: inherit;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.vote-buttons button:hover {
+    background-color:#292524;
+    transition: 0.4s;
 }
 
 ul {
@@ -117,7 +138,7 @@ ul {
     font-size: 17px;
     padding: 16px 0 13px;
     border: none;
-    border-radius: 25px;
+    border-radius: 100px;
     transition: 0.3s;
     color: inherit;
     cursor: pointer;
@@ -126,7 +147,17 @@ ul {
 }
 
 .btn:hover {
-    transform: scale(105%) rotate(-5deg);
+    transform: scale(110%) rotate(-5deg);
+}
+
+.category:hover:nth-child(odd) .btn {
+    transform: scale(110%) rotate(5deg);
+    transition: 0.4s;
+}
+
+.category:hover:nth-child(even) .btn {
+    transform: scale(110%) rotate(-5deg);
+    transition: 0.4s;
 }
 
 .btn-large {
