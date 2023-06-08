@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Coiny&family=Sono:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- CSS STYLES  -->
     <link rel="stylesheet" href="style.css">
+    <!-- SCRIPTS  -->
+    <script defer src="script.js"></script>
 
     <title>Today I Learned!</title>
 </head>
@@ -21,10 +23,12 @@
                     <h1>Today I Learned</h1>
                 </div>
     
-                <button class="btn btn-large">Share a fact</button>
+                <button id="btn-share" class="btn btn-large">
+                    Share a fact
+                </button>
             </header>
     
-            <form action="" class="fact-form">
+            <form action="" id="fact-form" class="fact-form">
                 <input type="text" placeholder="Share a fact with the world..."/>
                 <span class="">200</span>
                 <input type="text" placeholder="Trustworthy source......"/>
