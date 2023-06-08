@@ -82,21 +82,26 @@ h1 {
     border-radius: 15px;
 }
 
-a {
-    text-decoration: none;
-    color: #a8a29e;
-    transition: 0.4s;
-}
-
-a:hover {
-    color: #3b82f6;
-    transition: 0.3s;
-}
-
 .vote-buttons{
     margin-left: auto;
 }
 
 ul {
     list-style: none;
+}
+
+.source:link, .source:visited {
+    text-decoration: none;
+    color: #a8a29e;
+    margin-left: 12px;
+    transition: 0.3s ease;
+}
+
+.source:hover {
+    color: #3b82f6;
+    transition: 0.3s;
+}
+
+.source:active {
+    color: #1101a8;
 }
