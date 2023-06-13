@@ -63,12 +63,9 @@ async function loadFacts() {
     })
     const data = await response.json()
     createFactList(data)
-    
 }
 
 function createFactList(dataArray) {
-    // fact_list.insertAdjacentHTML("afterbegin", "<li>David</>")
-    // fact_list.insertAdjacentHTML("afterbegin", "<li>David</>")
 
     const htmlArray = dataArray.map((fact) => 
     `
@@ -79,7 +76,8 @@ function createFactList(dataArray) {
             (Source)
         </a>
     </p>
-    <span class="tag" style="background-color: #3b82f6">
+    <span class="tag" style="background-color: 
+        ${CATEGORIES.find((category) => category.name === fact.category).color}">
         ${fact.category}
     </span>
     </li>
@@ -104,3 +102,10 @@ function hide_form() {
         btn_share.innerHTML = "Close"
     }
 }
+
+const list = [7, 64, 6, -23, 11]
+const filtered_list = list.filter((element) => element > 10)
+console.log(filtered_list)
+const filtered_list2 = list.find((element) => element < 10)
+console.log(filtered_list2)
+
