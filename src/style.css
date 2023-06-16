@@ -11,7 +11,8 @@ body {
     padding: 48px 64px;
 }
 
-.container {
+/* MAIN LAYOUT  */
+#root {
     max-width: 1500px;
     margin: 0 auto;
 }
@@ -168,19 +169,19 @@ h1 {
     transition: 0.4s;
     margin-top: -5px;
     margin-left: -3px;
-    filter: brightness(1.2);
+    filter: saturate(2) brightness(1.2);
 }
 
 .vote-buttons button:hover .mind-blowing{
     transform: scale(125%) rotate(-360deg);
     transition: 0.4s;
-    filter: brightness(1.2);
+    filter: saturate(2) brightness(1.2);
 }
 
 .vote-buttons button:hover .forbidden{
     transform: scale(125%) rotateY(360deg); 
     transition: 0.4s;
-    filter: brightness(1.2);
+    filter: saturate(2) brightness(1.2);
 }
 
 ul {
@@ -219,17 +220,20 @@ ul {
 }
 
 .btn:hover {
-    transform: scale(110%) rotate(5deg);
+    transform: scale(107%) rotate(4deg);
+    filter: saturate(1.1);
 }
 
 .category:hover:nth-child(odd) .btn {
-    transform: scale(110%) rotate(5deg);
+    transform: scale(107%) rotate(4deg);
     transition: 0.4s;
+    filter: saturate(1.1);
 }
 
 .category:hover:nth-child(even) .btn {
-    transform: scale(110%) rotate(-5deg);
+    transform: scale(107%) rotate(-4deg);
     transition: 0.4s;
+    filter: saturate(1.1);
 }
 
 .btn-large {
