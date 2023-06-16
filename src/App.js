@@ -52,35 +52,13 @@ function Counter() {
 function App() {
   // 1. Define state variable 
   const [showForm, setShowForm] = useState(false)
-  const [searchButton, setSearchButton] = useState(true)
-  const appTitle = "Today I Learned"
-
-  // 3. Update state variable 
-  function displayForm() {
-    setShowForm(!showForm)
-    setSearchButton(!searchButton)
-  }
 
   return (
   // A component cannot return more than one element
   // This is called a fragment (JSX element), i won't produce eny html output, so we can return more than one element (link to component together)
   <> 
-    {/* HEADER */}
-    <header className="header">
-        <div className="logo">
-            <img src="logo.png" alt="Today I Learned Logo"/>
-            <h1>{appTitle}</h1>
-        </div>
-
-        <button id="btn-share" className="btn btn-large" onClick={
-          () => displayForm() /* 3. Update state variable */
-        }>
-            {/* 2. Use state variable */}
-            {searchButton ? "Share a fact" : "Close"}
-        </button>
-    </header>
+    <Header showForm={showForm} setShowForm={setShowForm} />
     
-    {/* 2. Use state variable */}
     {showForm ? <NewFactForm /> : null}
 
     <main className="main">
@@ -91,8 +69,24 @@ function App() {
   )
 }
 
-function NewFactForm(){
-  return <form className="fact-form">Fact form</form>
+function Header({ showForm, setShowForm }) {
+  const appTitle = "Today I Learned"
+
+  return (
+    <header className="header">
+      <div className="logo">
+          <img src="logo.png" alt="Today I Learned Logo"/>
+          <h1>{appTitle}</h1>
+      </div>
+
+      <button id="btn-share" className="btn btn-large" onClick={
+        () => setShowForm((show) => ! show) /* 3. Update state variable */
+      }>
+          {/* 2. Use state variable */}
+          {showForm ? 'Close' : 'Share a fact'}
+      </button>
+    </header>
+  )
 }
 
 const CATEGORIES = [
@@ -105,6 +99,45 @@ const CATEGORIES = [
   { name: "history", color: "#f97316" },
   { name: "news", color: "#8b5cf6" },
 ];
+
+function NewFactForm(){
+  const [text, setText] = useState("")
+  const [source, setSource] = useState("")
+  const [category, setCategory] = useState("")
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    console.log(text, source, category)
+  }
+
+  return (
+    <form className="fact-form" onSubmit={handleSubmit}>
+      <input 
+        type="text" 
+        placeholder="Share a fact with the world..." 
+        value={text}
+        onChange={(event) => setText(event.target.value)}/>
+
+      <span className="">{ 200 - text.length}</span>
+
+      <input 
+        type="text" 
+        placeholder="Trustworthy source......"
+        value={source}
+        onChange={(event) => setSource(event.target.value)}/>
+
+      <select value={category} onChange={(event) => setCategory(event.target.value)}>
+          <option value="">Change Category:</option>
+            {CATEGORIES.map((category) => 
+          <option key={category.name} value={category.name}>
+              {category.name.toUpperCase()}
+          </option>
+          )}
+      </select>
+      <button className="btn btn-large">Post</button>
+    </form>
+  )
+}
 
 function CategoryFilter() {
   return (
