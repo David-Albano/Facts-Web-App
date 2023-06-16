@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './style.css'
 
 const initialFacts = [
@@ -34,8 +35,31 @@ const initialFacts = [
   },
 ];
 
+function Counter() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <div>
+      <span style={{ fontSize: '40px'}}>{count}</span>
+      <button className="btn btn-large" onClick={
+        () => setCount(count + 1)
+        }>
+          +1
+      </button>
+    </div>
+  )
+}
 function App() {
+  // 1. Define state variable 
+  const [showForm, setShowForm] = useState(false)
+  const [searchButton, setSearchButton] = useState(true)
   const appTitle = "Today I Learned"
+
+  // 3. Update state variable 
+  function displayForm() {
+    setShowForm(!showForm)
+    setSearchButton(!searchButton)
+  }
 
   return (
   // A component cannot return more than one element
@@ -48,12 +72,16 @@ function App() {
             <h1>{appTitle}</h1>
         </div>
 
-        <button id="btn-share" className="btn btn-large">
-            Share a fact
+        <button id="btn-share" className="btn btn-large" onClick={
+          () => displayForm() /* 3. Update state variable */
+        }>
+            {/* 2. Use state variable */}
+            {searchButton ? "Share a fact" : "Close"}
         </button>
     </header>
-
-    <NewFactForm />
+    
+    {/* 2. Use state variable */}
+    {showForm ? <NewFactForm /> : null}
 
     <main className="main">
       <CategoryFilter />
