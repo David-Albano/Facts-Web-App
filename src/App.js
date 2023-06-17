@@ -54,13 +54,20 @@ function App() {
   // 1. Define state variable 
   const [showForm, setShowForm] = useState(false)
   const [facts, setFacts] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(function() {
     async function getFacts() {
+      setIsLoading(true)
       let { data: facts, error } = await supabase
       .from('facts')
-      .select() // Could be also .select("*") to select ALL
-      setFacts(facts)
+      .select()  // Could be also .select("*") to select ALL
+      .order('votesInteresting', {ascending: false})
+      // .limit(7)
+      
+      {!error ? setFacts(facts) : alert('There was a problem getting data')}
+      
+      setIsLoading(false)
     }
 
     getFacts()
@@ -76,11 +83,36 @@ function App() {
 
     <main className="main">
       <CategoryFilter />
-      <FactList facts={facts} />
+      
+      {isLoading ? <Loader /> : <FactList facts={facts} />}
     </main>
   </>
   )
 }
+
+function Loader() {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setProgress((prevProgress) => {
+        if (prevProgress >= 100) {
+          clearInterval(interval);
+          return prevProgress;
+        }
+        return prevProgress + 1;
+      });
+    }, 20);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="loader">
+      <div className="loader-spinner"></div>
+        <p className="loader-progress">{progress}%</p>
+    </div>
+  );
+};
 
 function Header({ showForm, setShowForm }) {
   const appTitle = "Today I Learned"
@@ -249,7 +281,7 @@ function Fact({ fact }) {
         <div className="vote-buttons">
             <button>
                 <div className="thumb-up">👍</div>
-                <div> {fact.votesIntersting}</div></button>
+                <div> {fact.votesInteresting}</div></button>
             <button>
                 <div className="mind-blowing">🤯</div>
                 <div> {fact.votesMindblowing}</div></button>
