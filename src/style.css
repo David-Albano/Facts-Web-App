@@ -19,11 +19,11 @@ body {
 
 .main {
     display: grid;
-
+    height: 80vh;
     /* First value is the specific one desired for the first row, 
     the second value as "1fr" is going to occupy th rest of the space */
     grid-template-columns: 250px 1fr;
-    gap: 48px;
+    gap: 35px;
 }
 
 .header {
@@ -162,6 +162,29 @@ h1 {
     transition: 1s ease;
 }
 
+section {
+    overflow: scroll;
+    padding-bottom: 40px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 0;
+}
+
+::-webkit-scrollbar-track, ::-webkit-scrollbar-corner {
+    background-color: rgb(0, 0, 0, 0);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(transparent, #000);
+    border-radius:  10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(transparent, #cec2bc);
+}
+
 .fact {
     font-size: 20px;
     line-height: 1.4;
@@ -173,6 +196,12 @@ h1 {
     display: flex;
     align-items: center;
     gap: 24px;
+}
+
+.disputed-fact {
+    color: #e70000;
+    font-size: larger;
+    font-weight: 700;
 }
 
 .tag {

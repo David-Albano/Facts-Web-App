@@ -163,7 +163,7 @@ function isValidHttpUrl(string) {
 
 function NewFactForm({setFacts, setShowForm}){
   const [text, setText] = useState("")
-  const [source, setSource] = useState("https://example.com")
+  const [source, setSource] = useState("")
   const [category, setCategory] = useState("")
   const [isUploading, setIsUploading] = useState(false)
 
@@ -174,17 +174,6 @@ function NewFactForm({setFacts, setShowForm}){
     // 2. Check if data is valid, If so, create a new fact
     
     if(text && isValidHttpUrl(source) && source && category && text.length <= 200) {
-      // 3. Create a new fact
-      // const newFact = {
-      //   id: Math.round(Math.random() * 1000000),
-      //   text: text,
-      //   source: source,
-      //   category: category,
-      //   votesInteresting: 0,
-      //   votesMindblowing: 0,
-      //   votesFalse: 0,
-      //   createdIn: 2023,
-      // }
 
       //. 3 Upload fact to supabase and receive th new fact object
 
@@ -202,7 +191,7 @@ function NewFactForm({setFacts, setShowForm}){
 
       // 5. Re set input fields
       setText("")
-      // setSource("")
+      setSource("")
       setCategory("")
 
       // 6. Close the form
@@ -273,7 +262,7 @@ function CategoryFilter({ setCurrentCategory }) {
 }
 
 function FactList({ facts, setFacts }){
-  if(facts.length == 0) {
+  if(facts.length === 0) {
     return (
       <div className='facts-message'>
           <div className="empty-logo">
@@ -300,6 +289,7 @@ function FactList({ facts, setFacts }){
 // const {factObj} = props   // (const factObj = props.factObj)
 function Fact({ fact, setFacts }) {
     const [isUpdating, setIsUpdating] = useState(false)
+    const factIsDisputed = fact.votesFalse > fact.votesInteresting + fact.votesMindblowing
 
     async function handleVote(columnName) {
       setIsUpdating(true)
@@ -320,6 +310,7 @@ function Fact({ fact, setFacts }) {
     return(
       <li className="fact">
         <p>
+            {factIsDisputed ? <span className="disputed-fact">[⛔️ DISPUTED] </span> : null}
             { fact.text }
             <a className="source"
                 href={fact.source} 
