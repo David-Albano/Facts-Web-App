@@ -56,7 +56,7 @@ h1 {
 }
 
 .logo img:hover {
-    transform: scale(110%) rotate(360deg);
+    transform: scale(115%) rotate(360deg);
     transition: 0.5s;
 }
 
