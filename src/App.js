@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import supabase from './supabase';
 import './style.css'
 
 const initialFacts = [
@@ -52,7 +53,18 @@ function Counter() {
 function App() {
   // 1. Define state variable 
   const [showForm, setShowForm] = useState(false)
-  const [facts, setFacts] = useState(initialFacts)
+  const [facts, setFacts] = useState([])
+
+  useEffect(function() {
+    async function getFacts() {
+      let { data: facts, error } = await supabase
+      .from('facts')
+      .select() // Could be also .select("*") to select ALL
+      setFacts(facts)
+    }
+
+    getFacts()
+  }, [])
 
   return (
   // A component cannot return more than one element
@@ -237,7 +249,7 @@ function Fact({ fact }) {
         <div className="vote-buttons">
             <button>
                 <div className="thumb-up">👍</div>
-                <div> {fact.votesInteresting}</div></button>
+                <div> {fact.votesIntersting}</div></button>
             <button>
                 <div className="mind-blowing">🤯</div>
                 <div> {fact.votesMindblowing}</div></button>
