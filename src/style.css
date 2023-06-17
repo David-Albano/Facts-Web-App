@@ -213,6 +213,10 @@ h1 {
     transition: 0.4s;
 }
 
+.vote-buttons button:disabled {
+    filter: opacity(0.3);
+}
+
 .thumb-up {
     margin-top: -3px;
     transition: 0.5s;
